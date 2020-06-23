@@ -8,10 +8,7 @@ import Rules from "./components/Rules.js";
 const AppStyled = styled.main`
   background-image: radial-gradient(circle at top, #1f3757 50%, #131537 100%);
   color: white;
-
-  body {
-    font-family: "Barlow Semi Condensed", sans-serif;
-  }
+  font-family: "Barlow Semi Condensed", sans-serif;
   .app-content {
     padding: 2em;
     min-height: 100vh;
