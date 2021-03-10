@@ -1,9 +1,11 @@
-import React from "react";
+import React, { createContext, useState } from "react";
 import Header from "./components/Header.js";
 import styled from "styled-components";
 import Wrapper from "./components/Wrapper.js";
 import Table from "./components/Table.js";
 import Rules from "./components/Rules.js";
+
+export const ScoreContext = createContext();
 
 const AppStyled = styled.main`
   background-image: radial-gradient(circle at top, #1f3757 50%, #131537 100%);
@@ -20,16 +22,24 @@ const AppStyled = styled.main`
 `;
 
 function App() {
+  const [score, setScore] = useState(0);
   return (
-    <AppStyled>
-      <Wrapper>
-        <div className="app-content">
-          <Header />
-          <Table />
-          <Rules />
-        </div>
-      </Wrapper>
-    </AppStyled>
+    <ScoreContext.Provider
+      value={{
+        score,
+        setScore,
+      }}
+    >
+      <AppStyled>
+        <Wrapper>
+          <div className="app-content">
+            <Header />
+            <Table />
+            <Rules />
+          </div>
+        </Wrapper>
+      </AppStyled>
+    </ScoreContext.Provider>
   );
 }
 

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import Token from "./Token.js";
 import { WhiteButton } from "./Button";
+import { ScoreContext } from "../App.js";
 
 const TableStyled = styled.div`
   display: grid;
@@ -67,9 +68,9 @@ const elements = ["paper", "scissors", "rock"];
 function Table() {
   const [result, setResult] = useState("");
   const [playing, setPlaying] = useState(false);
-  //const [score, setScore] = useState(0);
   const [pick, setPick] = useState("");
   const [housePick, setHousePick] = useState("default");
+  const { score, setScore } = useContext(ScoreContext);
 
   function getRandom(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
@@ -98,6 +99,9 @@ function Table() {
     const results = playWithIA(name, house);
     setResult(results);
     //console.log(results);
+    if (results == "ganaste") {
+      setScore(score + 1);
+    }
   }
   function playWithIA(pick, housePick) {
     if (housePick === pick) {

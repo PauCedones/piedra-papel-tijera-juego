@@ -31,7 +31,7 @@ const RulesStyled = styled.div`
 `;
 
 function Rules() {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
 
   function handleToggleClick() {
     setVisible(!visible);
