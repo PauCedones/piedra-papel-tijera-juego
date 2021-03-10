@@ -41,17 +41,17 @@ function Rules() {
       {visible && (
         <div className="rules-overlay">
           <h2> Reglas </h2>
-          <img src="./images/image-rules.svg" alt="relgas del juego" />
+          <img src="./images/image-rules.svg" alt="game rules" />
           <img
             className="close-button"
             onClick={handleToggleClick}
             src="./images/icon-close.svg"
-            alt="cerrar reglas"
+            alt="close the game rules"
           />
         </div>
       )}
 
-      <Button onClick={handleToggleClick} />
+      <Button onClick={handleToggleClick}>Rules</Button>
     </RulesStyled>
   );
 }

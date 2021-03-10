@@ -4,11 +4,13 @@ import styled from "styled-components";
 const TokenStyled = styled.div`
   width: 130px;
   height: 125px;
-  border: 15px solid ${({ color }) => color.base};
+  padding: ${({ name }) => (name === "default" ? "16px" : "0")};
+  border: 16px solid ${({ color }) => color.base};
   box-sizing: border-box;
   border-radius: 50%;
   display: flex;
-  background: white;
+  background: ${({ name }) => (name === "default" ? "#122343" : "white")};
+
   box-shadow: 0 5px 0px ${({ color }) => color.border};
   cursor: pointer;
   position: relative;
@@ -17,7 +19,8 @@ const TokenStyled = styled.div`
     transform: scale(0.9);
   }
   .box {
-    box-shadow: 0 -4px 0 #babfd4;
+    box-shadow: 0 -4px 0 ${({ name }) => (name === "default" ? "transparent" : "#babfd4")};
+
     flex: 1;
     align-self: stretch;
     border-radius: 50%;
@@ -26,7 +29,7 @@ const TokenStyled = styled.div`
     align-items: center;
   }
 `;
-const color = {
+const colors = {
   paper: {
     base: "#516ef4",
     border: "#2543c3",
@@ -39,11 +42,19 @@ const color = {
     base: "#eca81e",
     border: "#c76c14",
   },
+  default: {
+    base: "transparent",
+    border: "transparent",
+  },
 };
 
-function Token({ name }) {
+function Token({ name = "default", onClick }) {
+  function handleClick() {
+    onClick(name);
+  }
+  const color = colors[name];
   return (
-    <TokenStyled color={color[name]}>
+    <TokenStyled color={color} onClick={handleClick} name={name}>
       <div className="box">
         <img src={`./images/icon-${name}.svg`} alt="" />
       </div>
