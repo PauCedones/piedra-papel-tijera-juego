@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/piedra-papel-tijera-juego/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/piedra-papel-tijera-juego/static/js/main.b3720d36.chunk.js",
+    "main.js.map": "/piedra-papel-tijera-juego/static/js/main.b3720d36.chunk.js.map",
+    "runtime-main.js": "/piedra-papel-tijera-juego/static/js/runtime-main.e7ee8299.js",
+    "runtime-main.js.map": "/piedra-papel-tijera-juego/static/js/runtime-main.e7ee8299.js.map",
+    "static/js/2.ecc5ef6e.chunk.js": "/piedra-papel-tijera-juego/static/js/2.ecc5ef6e.chunk.js",
+    "static/js/2.ecc5ef6e.chunk.js.map": "/piedra-papel-tijera-juego/static/js/2.ecc5ef6e.chunk.js.map",
+    "index.html": "/piedra-papel-tijera-juego/index.html",
+    "precache-manifest.2f6e1c2dfe56903d4b657034b70be352.js": "/piedra-papel-tijera-juego/precache-manifest.2f6e1c2dfe56903d4b657034b70be352.js",
+    "service-worker.js": "/piedra-papel-tijera-juego/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/piedra-papel-tijera-juego/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.ecc5ef6e.chunk.js.LICENSE.txt": "/piedra-papel-tijera-juego/static/js/2.ecc5ef6e.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e7ee8299.js",
+    "static/js/2.ecc5ef6e.chunk.js",
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.b3720d36.chunk.js"
+  ]
+}
