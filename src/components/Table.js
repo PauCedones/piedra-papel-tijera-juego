@@ -26,21 +26,20 @@ const TableStyled = styled.div`
     text-align: center;
     h2 {
       text-transform: uppercase;
+      font-size: 56px;
+      margin: 10px;
     }
   }
   .line {
-    //si no estoy jugando, el display que sea de block, de lo contrario que sea none
     display: ${({ playing }) => (!playing ? "block" : "none")};
     height: 14px;
     background: rgba(0, 0, 0, 0.2);
     position: absolute;
-    left: 60px;
-    right: 60px;
+    width: 200px;
     top: 58px;
-
     &:before {
       content: "";
-      height: 10px;
+      height: 14px;
       background: rgba(0, 0, 0, 0.2);
       position: absolute;
       left: 0;
@@ -51,7 +50,7 @@ const TableStyled = styled.div`
     }
     &:after {
       content: "";
-      height: 10px;
+      height: 14px;
       background: rgba(0, 0, 0, 0.2);
       position: absolute;
       left: 0;
@@ -59,6 +58,36 @@ const TableStyled = styled.div`
       top: 0;
       transform: rotate(-60deg);
       transform-origin: right top;
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    grid-template-columns: 300px 300px;
+    ${({ playing, results }) =>
+      playing && results && "grid-template-columns: 300px 110px 110px 300px;"}
+    & div:nth-of-type(3) {
+      ${({ playing, results }) =>
+        playing && results && "grid-column: 2 / 4; grid-row: 1;"}
+    }
+    .line {
+      width: 300px;
+    }
+    .results {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .in-game {
+      font-size: 1.2em;
+      display: flex;
+      flex-direction: column;
+      > div {
+        order: 2;
+      }
+      > p {
+        order: 1;
+        margin-bottom: 2em;
+      }
     }
   }
 `;
@@ -71,6 +100,7 @@ function Table() {
   const [pick, setPick] = useState("");
   const [housePick, setHousePick] = useState("default");
   const { score, setScore } = useContext(ScoreContext);
+  const [iWon, setIwon] = useState(false);
 
   function getRandom(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
@@ -100,6 +130,7 @@ function Table() {
     setResult(results);
     if (results === "win") {
       setScore(score + 1);
+      setIwon(true);
     }
   }
   function playWithIA(pick, housePick) {
@@ -133,6 +164,7 @@ function Table() {
   }
   function handleTryAgainClick() {
     setPlaying(false);
+    setResult("");
   }
   return (
     <TableStyled playing={playing}>
@@ -146,18 +178,22 @@ function Table() {
       ) : (
         <>
           <div className="in-game">
-            <Token name={pick} />
-            <p>Vos elegiste</p>
+            <Token name={pick} isShadowAnimated={result == "win"} />
+            <p>You picked</p>
           </div>
           <div className="in-game">
-            <Token name={housePick} />
-            <p>La casa eligió</p>
+            <Token name={housePick} isShadowAnimated={result == "lose"} />
+            <p>the house picked</p>
           </div>
           <div className="results">
-            <h1>{result}</h1>
-            <WhiteButton onClick={handleTryAgainClick}>
-              Volver a jugar
-            </WhiteButton>
+            {result && (
+              <>
+                <h2>YOU {result}</h2>
+                <WhiteButton onClick={handleTryAgainClick}>
+                  try again
+                </WhiteButton>
+              </>
+            )}
           </div>
         </>
       )}

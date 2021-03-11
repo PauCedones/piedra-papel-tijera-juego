@@ -1,17 +1,13 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-const WrappedStyled =styled.div`
-max-width: 1024px;
-margin: auto;
-`
+const WrappedStyled = styled.div`
+  max-width: 700px;
+  margin: auto;
+`;
 
-function Wrapper( {children} ) {
-    return(
-        <WrappedStyled>
-            {children}
-        </WrappedStyled>
-    )
+function Wrapper({ children }) {
+  return <WrappedStyled>{children}</WrappedStyled>;
 }
 
 export default Wrapper;

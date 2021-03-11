@@ -8,7 +8,7 @@ import Rules from "./components/Rules.js";
 export const ScoreContext = createContext();
 
 const AppStyled = styled.main`
-  background-image: radial-gradient(circle at top, #1f3757 50%, #131537 100%);
+  background-image: radial-gradient(circle at top, #1f3757 20%, #131537 100%);
   color: white;
   font-family: "Barlow Semi Condensed", sans-serif;
   .app-content {

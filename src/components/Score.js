@@ -8,7 +8,6 @@ const ScoreStyled = styled.div`
   padding: 10px;
   border-radius: 8px;
   width: 80px;
-
   small {
     color: #2a45c2;
     text-transform: uppercase;
@@ -22,6 +21,15 @@ const ScoreStyled = styled.div`
     margin: 0;
     font-weight: 700;
     position: relative;
+  }
+  @media screen and (min-width: 768px) {
+    padding: 10px 20px;
+    small {
+      font-size: 16px;
+    }
+    p {
+      font-size: 60px;
+    }
   }
 `;
 
