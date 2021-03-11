@@ -94,41 +94,40 @@ function Table() {
     setPlaying(true);
     setPick(name);
     const house = await launchHousePick();
-    const housePick = launchHousePick();
-    //console.log("la casa eligió", house);
+    // console.log(house)
+    // console.log('la casa eligió ', house)
     const results = playWithIA(name, house);
     setResult(results);
-    //console.log(results);
-    if (results == "ganaste") {
+    if (results === "win") {
       setScore(score + 1);
     }
   }
   function playWithIA(pick, housePick) {
     if (housePick === pick) {
-      return "empate";
+      return "draw";
     }
     if (pick === "paper") {
-      if (housePick === "rock") {
-        return "ganaste";
-      }
       if (housePick === "scissors") {
-        return "perdiste";
+        return "lose";
+      }
+      if (housePick === "rock") {
+        return "win";
       }
     }
     if (pick === "scissors") {
       if (housePick === "paper") {
-        return "ganaste";
+        return "win";
       }
       if (housePick === "rock") {
-        return "perdiste";
+        return "lose";
       }
     }
     if (pick === "rock") {
       if (housePick === "paper") {
-        return "perdiste";
+        return "lose";
       }
       if (housePick === "scissors") {
-        return "ganaste";
+        return "win";
       }
     }
   }

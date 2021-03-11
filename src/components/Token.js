@@ -10,16 +10,17 @@ const TokenStyled = styled.div`
   border-radius: 50%;
   display: flex;
   background: ${({ name }) => (name === "default" ? "#122343" : "white")};
-
   box-shadow: 0 5px 0px ${({ color }) => color.border};
   cursor: pointer;
   position: relative;
   z-index: 2;
+  box-shadow: 0 0 10px 40px rgba(0, 0, 0, 0.15), 0 0 0 40px rgba(0, 0, 0, 0.125);
   &:active {
     transform: scale(0.9);
   }
   .box {
-    box-shadow: 0 -4px 0 ${({ name }) => (name === "default" ? "transparent" : "#babfd4")};
+    box-shadow: 0 0 0 0px rgba(255, 255, 255, 0.04),
+      0 0 0 0px rgba(255, 255, 255, 0.04), 0 0 0 0px rgba(255, 255, 255, 0.02);
 
     flex: 1;
     align-self: stretch;
@@ -50,7 +51,9 @@ const colors = {
 
 function Token({ name = "default", onClick }) {
   function handleClick() {
-    onClick(name);
+    if (onClick) {
+      onClick(name);
+    }
   }
   const color = colors[name];
   return (
